@@ -9,8 +9,8 @@ import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
-        url: '/dashboard',
+        title: 'Productos',
+        url: '/products',
         icon: LayoutGrid,
     },
 ];
@@ -30,8 +30,8 @@ const footerNavItems: NavItem[] = [
 
 export function AppSidebar() {
     return (
-        <Sidebar collapsible="icon" variant="inset">
-            <SidebarHeader>
+        <Sidebar collapsible="icon" variant="inset" >
+            <SidebarHeader className="bg-[#353c59] text-white">
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
@@ -43,12 +43,12 @@ export function AppSidebar() {
                 </SidebarMenu>
             </SidebarHeader>
 
-            <SidebarContent>
+            <SidebarContent className="bg-[#353c59] text-white">
                 <NavMain items={mainNavItems} />
             </SidebarContent>
 
-            <SidebarFooter>
-                <NavFooter items={footerNavItems} className="mt-auto" />
+            <SidebarFooter className="bg-[#353c59] text-white">
+                {/*<NavFooter items={footerNavItems} className="mt-auto" />*/}
                 <NavUser />
             </SidebarFooter>
         </Sidebar>

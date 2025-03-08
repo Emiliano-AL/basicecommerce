@@ -5,6 +5,7 @@ namespace App\Enums;
 enum OrderStatus: string
 {
     case Pending = 'pending';
+    case Cart = 'cart';
     case Processing = 'processing';
     case Completed = 'completed';
     case Cancelled = 'cancelled';
@@ -14,6 +15,7 @@ enum OrderStatus: string
     {
         return [
             self::Pending,
+            self::Cart,
             self::Processing,
             self::Completed,
             self::Cancelled,
@@ -25,6 +27,7 @@ enum OrderStatus: string
     {
         return match ($value) {
             self::Pending => 'Pendiente',
+            self::Cart => 'Carrito',
             self::Processing => 'Procesando',
             self::Completed => 'Completado',
             self::Cancelled => 'Cancelado',
