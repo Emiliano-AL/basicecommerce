@@ -12,6 +12,13 @@ class OrderDetailSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $orders = \App\Models\Order::all();
+        foreach ($orders as $order) {
+            $orderDetails = \App\Models\OrderDetail::factory()
+                ->withOrderId($order->id)
+                ->count(5)->create();
+            $order->amount = $orderDetails->sum('total');
+            $order->save();
+        }
     }
 }
