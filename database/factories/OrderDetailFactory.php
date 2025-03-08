@@ -29,7 +29,7 @@ class OrderDetailFactory extends Factory
         ];
     }
 
-    public function withOrderId(int $orderId)
+    public function withOrder(int $orderId)
     {
         return $this->state(function (array $attributes) use ($orderId) {
             return [

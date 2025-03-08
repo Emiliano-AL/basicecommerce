@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->timestamp('start_order_date');
             $table->timestamp('end_order_date')->nullable();
-            $table->unsignedBigInteger('total_price');
+            $table->unsignedBigInteger('total_price')->default(0);
             $table->string('order_status');
             $table->timestamps();
 

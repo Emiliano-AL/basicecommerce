@@ -16,8 +16,10 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
+        $name = $this->faker->sentence(3);
         return [
-            'name' => $this->faker->word,
+            'name' => $name,
+            'slug' => \Str::slug($name),
             'description' => $this->faker->sentence,
         ];
     }

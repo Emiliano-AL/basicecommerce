@@ -15,9 +15,9 @@ class OrderDetailSeeder extends Seeder
         $orders = \App\Models\Order::all();
         foreach ($orders as $order) {
             $orderDetails = \App\Models\OrderDetail::factory()
-                ->withOrderId($order->id)
+                ->withOrder($order->id)
                 ->count(5)->create();
-            $order->amount = $orderDetails->sum('total');
+            $order->total_price = $orderDetails->sum('total');
             $order->save();
         }
     }
