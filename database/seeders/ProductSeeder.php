@@ -15,7 +15,7 @@ class ProductSeeder extends Seeder
         $categories = \App\Models\Category::all();
         foreach ($categories as $category) {
             \App\Models\Product::factory()->withCategory($category->id)
-                ->count(20)
+                ->count(5)
                 ->create();
         }
     }

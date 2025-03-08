@@ -48,4 +48,65 @@ class ProductController extends Controller
 
         return redirect()->back()->with('success', 'Product added to cart!');
     }
+
+    public function list(): Response
+    {
+        $products = Product::
+            with('category')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        return Inertia::render('admin/index', [
+            'products' => $products,
+        ]);
+    }
+
+    public function add(): Response
+    {
+        $categories = Category::all();
+        return Inertia::render('admin/products/add', [
+            'categories' => $categories,
+        ]);
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required',
+            'category_id' => 'required',
+        ]);
+
+        $product = new Product(
+            $request->only(['name', 'price', 'category_id'])
+        );
+        $product->save();
+        return redirect()->route('products.list');
+    }
+
+    public function edit(Product $product): Response
+    {
+        return Inertia::render('admin/products/edit', [
+            'product' => $product,
+        ]);
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required',
+            'category_id' => 'required',
+        ]);
+
+        $product->update(
+            $request->only(['name', 'price', 'category_id'])
+        );
+        return redirect()->route('products.list');
+    }
+
+    public function destroy(Product $product)
+    {
+        $product->delete();
+        return redirect()->route('products.list');
+    }
+
 }

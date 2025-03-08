@@ -48,7 +48,9 @@ export interface Product {
     category_id: number;
     sku: string;
     price: number;
+    stock: number;
     image: string;
+    category: { id: number; name: string };
     manufacturer: string;
     created_at: string;
     updated_at: string;
