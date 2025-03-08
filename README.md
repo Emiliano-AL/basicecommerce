@@ -16,6 +16,14 @@ bash npm install
 
 3. Iniciar el servidor
 4. Iniciar el servidor de desarrollo
+5. Correr las migraciones y seeders
+```
+php artisan migrate --seed
+```
+
+## datos de prueba
+- usuario: admin@example.com
+- contraseña: password
 
 ## Tecnologias
 - Node.js
